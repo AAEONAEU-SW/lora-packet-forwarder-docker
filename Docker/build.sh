@@ -9,12 +9,12 @@ make
 make install
 
 cd /app/build
-git clone https://github.com/mirakonta/lora_gateway.git
+git clone https://github.com/AAEONAEU-SW/lora_gateway.git
 cd lora_gateway
 make clean all
 
 cd /app/build
-git clone https://github.com/mirakonta/packet_forwarder.git
+git clone https://github.com/AAEONAEU-SW/packet_forwarder.git
 cd packet_forwarder
 make
 
