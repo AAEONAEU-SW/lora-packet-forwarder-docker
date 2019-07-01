@@ -11,7 +11,7 @@ To build your lora conentrator you can follow `mirakonta/lora_gateway` instructi
 ## Installation
 
 ```
-$ git clone https://github.com/cetic/lora-packet-forwarder-docker.git
+$ git clone https://github.com/AAEONAEU-SW/lora-packet-forwarder-docker.git
 $ sudo apt-get install docker docker-compose
 ```
 
