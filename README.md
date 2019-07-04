@@ -1,12 +1,6 @@
 # LoRA Packet Forwarder
 
-This git describes how to deploy a LoRA Packet Forwarder using Docker
-
-In this project, the lora conentrator is compose with :
-- 1 x Multitech mCard LoRa 868MHz (MTAC-LORA-868)
-- 1 x USB to Mini PCIe converter
-
-To build your lora conentrator you can follow `mirakonta/lora_gateway` instruction in this [wiki](https://github.com/mirakonta/lora_gateway/wiki/Part-2:-Hardware-modifications)
+This git describes how to deploy a LoRA Packet Forwarder using Docker and [UP Squared LoRa Edge Computing](https://up-shop.org/up-systems/292-up-squared-lora-edge-computing.html)
 
 ## Installation
 
@@ -59,8 +53,6 @@ __Warning__ : keep the same `gateway_ID` in the 'local_conf.json' and 'global_co
 
 ### 1. Docker Compose
 
-With the docker-compose tool, you don't need to change the USB interface (automatic research)
-
 ```
 $ cd lora-packet-forwarder-docker
 $ sudo docker-compose up -d
@@ -69,40 +61,21 @@ __Warning__ : If you work with your own DNS, add the docker DNS option to change
 
 ### 2. Docker
 
-#### Get BUS & DEVICE interface
-
-To run your packet forwarder container, you need to plug your antenna. Then, get the BUS and DEVICE number with the lsusd commande
-```
-$ lsusb
-Bus 001 Device 002: ID 0403:6014 Future Technology Devices International, Ltd FT232H Single HS USB-UART/FIFO IC
-```
-In this example :
-- BUS = 001
-- DEVICE = 002
-
 #### Docker RUN
 
-To lauch the container replace :
-- __AAAA__ <= BUS
-- __BBBB__ <= DEVICE
-
 ```
-$ cd lora-packet-forwarder-docker
-$ sudo docker run -t --rm --device=/dev/bus/usb/AAAA/BBBB -v $(pwd)/config:/opt/pf-config ceticasbl/lora-packet-forwarder:latest
+$ sudo docker build -t lora-packet-forwarder:latest .
+$ sudo docker run -it --rm --privileged --device=/dev/spidev1.0 -v /sys:/sys -v $(pwd)/config:/opt/pf-config lora-packet-forwarder:latest bash
 ```
 __Warning__ : If you work with your own DNS, add the docker DNS option to change the _nameserver_ in the container configuration : `--dns=YOUR_DNS_IP_ADDR`
 
 ## License
 
-[License: BSD-3](https://github.com/cetic/lora-packet-forwarder-docker/blob/master/LICENSE)
+[License: BSD-3](https://github.com/AAEONAEU-SW/lora-packet-forwarder-docker/blob/master/LICENSE)
 
 ## Credit
 
-- [mirakonta/packet_forwarder](https://github.com/mirakonta/packet_forwarder) - License: BSD-3
-- [mirakonta/lora_gateway](https://github.com/mirakonta/lora_gateway) - License: BSD-3
-- [devttys0/libmpsse](https://github.com/devttys0/libmpsse) - License: BSD-2
+- [Lora-net/packet_forwarder](https://github.com/Lora-net/packet_forwarder) - License: BSD-3
+- [Lora-net/lora_gateway](https://github.com/Lora-net/lora_gateway) - License: BSD-3
+- [cetic/lora-packet-forwarder-docker](https://github.com/cetic/lora-packet-forwarder-docker) - License: BSD-3
 
-## Authors
-
-* __Laurent Deru__ - mail : laurent.deru@cetic.be
-* __Benjamin Bernaud__ - mail : benjamin.bernaud@cetic.be

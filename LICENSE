@@ -1,4 +1,4 @@
-libmpsse, packet_forwarder and lora_gateway are licensed under the BSD license.
+packet_forwarder and lora_gateway are licensed under the BSD license.
 This license gives everyone the right to use and distribute the code, either in
 binary or source code format, as long as the copyright license is retained in
 the source code.
@@ -8,7 +8,7 @@ people and organizations, but the code is licensed under the same type
 of license. The license text is:
 
 
-* Copyright (c) 2018, CETIC
+* Copyright (c) 2019, AAEON Technology Europe B.V.
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without

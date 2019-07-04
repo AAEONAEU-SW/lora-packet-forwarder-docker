@@ -1,4 +1,5 @@
-#!/bin/sh -xe
+#!/bin/bash
 
-apk add build-base git libftdi1-dev
-ln -s /usr/include/libftdi1/ftdi.h /usr/include/ftdi.h
+apt-get update
+apt-get install build-essential git -y
+

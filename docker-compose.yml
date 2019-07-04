@@ -3,10 +3,10 @@ version: "2"
 services:
   lora-packet-forwarder:
     restart: unless-stopped
-    image: ceticasbl/lora-packet-forwarder:latest
+    image: lora-packet-forwarder:latest
     volumes:
       - ./config:/opt/pf-config
     devices:
-      - /dev/bus/usb:/dev/bus/usb
+      - /dev/spidev1.0:/dev/spidev1.0
     dns:
       - 8.8.8.8
